@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganetika Capital Partners | Principled Investing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to match the Oaktree aesthetic */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA; /* A very light grey for the body */
+        }
+        /* Oaktree's distinctive gold/ochre color */
+        .text-gold {
+            color: #C09553;
+        }
+        .bg-gold {
+            background-color: #C09553;
+        }
+        .border-gold {
+            border-color: #C09553;
+        }
+        /* Dark blue/charcoal for primary text and backgrounds */
+        .bg-primary-dark {
+            background-color: #1A2634;
+        }
+        .text-primary-dark {
+            color: #1A2634;
+        }
+        /* Arrow icon for links */
+        .link-arrow::after {
+            content: '→';
+            display: inline-block;
+            transition: transform 0.2s;
+            margin-left: 0.25rem;
+        }
+        .link-arrow:hover::after {
+            transform: translateX(4px);
+        }
+        /* Header transition */
+        #main-header.scrolled {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #e5e7eb;
+        }
+        #main-header.scrolled .nav-link {
+            color: #1A2634;
+        }
+        #main-header.scrolled .logo-text {
+            color: #1A2634;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="text-xl md:text-2xl font-bold logo-text text-white">
+                    Ganetika Capital
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#insights" class="nav-link text-white font-medium hover:text-gold transition">Insights</a>
+                    <a href="#strategies" class="nav-link text-white font-medium hover:text-gold transition">Strategies</a>
+                    <a href="#about" class="nav-link text-white font-medium hover:text-gold transition">About Us</a>
+                    <a href="#" class="nav-link text-white font-medium hover:text-gold transition">Contact</a>
+                </nav>
+
+                <!-- Right side icons and Client Login -->
+                <div class="flex items-center space-x-4">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 nav-link text-white cursor-pointer hover:text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <a href="#" class="hidden sm:block bg-gold text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-opacity-90 transition">Client Login</a>
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white text-primary-dark">
+            <a href="#insights" class="block py-3 px-6 hover:bg-gray-100">Insights</a>
+            <a href="#strategies" class="block py-3 px-6 hover:bg-gray-100">Strategies</a>
+            <a href="#about" class="block py-3 px-6 hover:bg-gray-100">About Us</a>
+            <a href="#" class="block py-3 px-6 hover:bg-gray-100">Contact</a>
+            <a href="#" class="block py-3 px-6 bg-gray-50 font-semibold">Client Login</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/1A2634/FFFFFF?text=Modern+Office+Building')">
+            <div class="absolute inset-0 bg-slate-900/60"></div>
+            <div class="relative z-10 text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Principled Investing. <br> Enduring Value.</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-200">
+                    We are a leading global investment firm, pursuing a disciplined, value-oriented approach to credit, real assets, and private equity.
+                </p>
+                <a href="#about" class="mt-8 inline-block border-2 border-gold text-gold font-semibold py-3 px-8 rounded-md hover:bg-gold hover:text-white transition duration-300">
+                    Our Philosophy
+                </a>
+            </div>
+        </section>
+
+        <!-- Featured Insights Section -->
+        <section id="insights" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary-dark text-center mb-4">Featured Insights</h2>
+                <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Explore our latest thinking on markets, strategies, and the global economic landscape.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Insight Card 1 -->
+                    <div class="bg-white rounded-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Abstract+Market+Graph" alt="Market analysis" class="w-full h-48 object-cover group-hover:opacity-90 transition">
+                        <div class="p-6">
+                            <p class="text-sm text-gold font-semibold mb-2">Market Commentary</p>
+                            <h3 class="text-xl font-bold text-primary-dark mb-3">Navigating Market Volatility in 2025</h3>
+                            <p class="text-gray-600 mb-4">A look at the key indicators and strategic positioning for the second half of the year.</p>
+                            <a href="#" class="font-semibold text-gold link-arrow">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Insight Card 2 -->
+                    <div class="bg-white rounded-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Sustainable+Energy" alt="Sustainable Investing" class="w-full h-48 object-cover group-hover:opacity-90 transition">
+                        <div class="p-6">
+                            <p class="text-sm text-gold font-semibold mb-2">Sustainable Investing</p>
+                            <h3 class="text-xl font-bold text-primary-dark mb-3">The Future of Green Bonds and Credit</h3>
+                            <p class="text-gray-600 mb-4">How ESG factors are creating new opportunities in the sustainable credit markets.</p>
+                            <a href="#" class="font-semibold text-gold link-arrow">Read More</a>
+                        </div>
+                    </div>
+                    <!-- Insight Card 3 -->
+                    <div class="bg-white rounded-lg overflow-hidden group">
+                        <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Global+Logistics" alt="Real Assets" class="w-full h-48 object-cover group-hover:opacity-90 transition">
+                        <div class="p-6">
+                            <p class="text-sm text-gold font-semibold mb-2">Real Assets</p>
+                            <h3 class="text-xl font-bold text-primary-dark mb-3">Industrial Real Estate: A New Era</h3>
+                            <p class="text-gray-600 mb-4">Analyzing the trends in logistics and supply chain that are driving value in real assets.</p>
+                            <a href="#" class="font-semibold text-gold link-arrow">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Firm Highlights / Stats -->
+        <section class="bg-primary-dark text-white py-16">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <p class="text-4xl lg:text-5xl font-bold text-gold">$85B</p>
+                        <p class="text-sm uppercase tracking-wider text-gray-300 mt-2">Assets Under Management</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl lg:text-5xl font-bold text-gold">25+</p>
+                        <p class="text-sm uppercase tracking-wider text-gray-300 mt-2">Years of Experience</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl lg:text-5xl font-bold text-gold">150+</p>
+                        <p class="text-sm uppercase tracking-wider text-gray-300 mt-2">Investment Professionals</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl lg:text-5xl font-bold text-gold">12</p>
+                        <p class="text-sm uppercase tracking-wider text-gray-300 mt-2">Global Offices</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Strategies Section -->
+        <section id="strategies" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="pr-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">A Disciplined, Contrarian Approach</h2>
+                        <p class="text-lg text-gray-600 mb-6">Our investment philosophy is built on a foundation of risk control, consistency, and a commitment to fundamental analysis. We believe that superior returns are achieved by taking a patient, long-term view.</p>
+                        <div class="space-y-4 mb-8">
+                           <p class="font-semibold text-primary-dark text-lg">Our core strategies include:</p>
+                           <ul class="list-disc list-inside text-gray-600 space-y-2">
+                               <li>Corporate and Distressed Credit</li>
+                               <li>Real Assets and Infrastructure</li>
+                               <li>Private Equity and Special Situations</li>
+                               <li>Listed Equities</li>
+                           </ul>
+                        </div>
+                        <a href="#" class="bg-gold text-white px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 transition inline-block">Explore Our Strategies</a>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/600x500/1A2634/FFFFFF?text=Team+Strategy+Session" alt="Team discussing strategy" class="rounded-lg shadow-xl w-full">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Snippet -->
+        <section id="about" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold text-primary-dark mb-4">About Ganetika Capital</h2>
+                 <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+                    Founded on the principle of placing capital where it is scarcest, Ganetika Capital has grown into a globally recognized leader in alternative investments. Our culture of shared success and intellectual rigor attracts exceptional talent and fosters the deep analysis that our clients expect.
+                 </p>
+                 <a href="#" class="border-2 border-gold text-gold font-semibold py-3 px-8 rounded-md hover:bg-gold hover:text-white transition duration-300">
+                    Learn More About Our Firm
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-dark text-gray-300 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+                <!-- Logo & mission -->
+                <div class="col-span-2 lg:col-span-1">
+                    <h3 class="text-xl font-bold text-white mb-4">Ganetika Capital</h3>
+                    <p class="text-sm text-gray-400">Principled Investing. Enduring Value.</p>
+                </div>
+                <!-- Links 1 -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4 uppercase tracking-wider text-sm">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-gold transition text-sm">About Us</a></li>
+                        <li><a href="#insights" class="hover:text-gold transition text-sm">Insights</a></li>
+                        <li><a href="#" class="hover:text-gold transition text-sm">Careers</a></li>
+                        <li><a href="#" class="hover:text-gold transition text-sm">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Links 2 -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4 uppercase tracking-wider text-sm">Strategies</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gold transition text-sm">Credit</a></li>
+                        <li><a href="#" class="hover:text-gold transition text-sm">Real Assets</a></li>
+                        <li><a href="#" class="hover:text-gold transition text-sm">Private Equity</a></li>
+                        <li><a href="#" class="hover:text-gold transition text-sm">Listed Equities</a></li>
+                    </ul>
+                </div>
+                <!-- Links 3 -->
+                <div>
+                     <h4 class="font-semibold text-white mb-4 uppercase tracking-wider text-sm">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-gold transition text-sm">Terms of Use</a></li>
+                        <li><a href="#" class="hover:text-gold transition text-sm">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-gold transition text-sm">Disclosures</a></li>
+                    </ul>
+                </div>
+                <!-- Client Login -->
+                 <div>
+                    <h4 class="font-semibold text-white mb-4 uppercase tracking-wider text-sm">Access</h4>
+                    <a href="#" class="bg-gold text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-opacity-90 transition inline-block">Client Login</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500 mb-4 md:mb-0">&copy; 2025 Ganetika Capital Partners. All Rights Reserved.</p>
+                <!-- Social Media Icons would go here -->
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('main-header');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Header scroll effect
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled', 'text-primary-dark');
+                    header.classList.remove('text-white');
+                } else {
+                    header.classList.remove('scrolled', 'text-primary-dark');
+                    header.classList.add('text-white');
+                }
+            };
+            
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Run on page load
+
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
+
