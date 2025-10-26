@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Client for Google App Script</title>
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .loader {
+            border-top-color: #3498db;
+            animation: spinner 1.5s linear infinite;
+        }
+        @keyframes spinner {
+            to { transform: rotate(360deg); }
+        }
+        /* Ensure main content is hidden initially */
+        #main-content {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-900">SheetDB Client</h1>
+            <p class="text-gray-600 mt-2">A browser-based client to interact with the Google App Script CRUD API.</p>
+        </header>
+
+        <!-- Authentication Section -->
+        <div id="auth-section" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg mb-8">
+            <!-- Google Sign-In Button Container -->
+            <div id="google-signin-container" class="flex justify-center"></div>
+
+            <!-- User Profile Display (hidden by default) -->
+            <div id="user-profile" class="hidden text-center">
+                <img id="user-avatar" class="w-16 h-16 rounded-full mx-auto mb-4" alt="User Avatar">
+                <h3 id="user-name" class="text-xl font-semibold"></h3>
+                <p id="user-email" class="text-gray-500 text-sm"></p>
+                <button id="sign-out-btn" class="mt-4 bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-md hover:bg-gray-300 transition duration-300 text-sm">Sign Out</button>
+            </div>
+        </div>
+
+
+        <!-- Main Content (hidden until signed in) -->
+        <div id="main-content" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Left Column: Actions -->
+            <div class="space-y-8">
+                <!-- Add/Update Form -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Add or Update Content</h2>
+                    <form id="saveForm" class="space-y-4">
+                        <input type="text" id="id" placeholder="ID (e.g., 1)" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+                        <input type="text" id="title" placeholder="Title" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+                        <textarea id="content" placeholder="Content" required class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500 h-24"></textarea>
+                        <input type="text" id="tags" placeholder="Tags (comma-separated)" class="w-full p-2 border rounded-md focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">Save (Create/Update)</button>
+                    </form>
+                </div>
+
+                <!-- Delete Form -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Delete Content</h2>
+                    <form id="deleteForm" class="flex items-center gap-4">
+                        <input type="text" id="deleteId" placeholder="ID to Delete" required class="flex-grow p-2 border rounded-md focus:ring-2 focus:ring-red-500">
+                        <button type="submit" class="bg-red-600 text-white font-bold py-2 px-4 rounded-md hover:bg-red-700 transition duration-300">Delete</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Display -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 border-b pb-2">Content from Sheet</h2>
+                <div class="flex items-center gap-4 mb-4">
+                    <button id="fetchAllBtn" class="flex-grow bg-gray-700 text-white font-bold py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300">Fetch All Content</button>
+                </div>
+                 <!-- Status & Loader -->
+                <div id="status" class="mb-4 text-center p-3 rounded-md hidden"></div>
+                <div id="loader" class="loader w-12 h-12 rounded-full border-8 mx-auto hidden"></div>
+                
+                <!-- Results Container -->
+                <div id="results" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                    <!-- Cards will be injected here -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- Google Auth Callback ---
+        function handleCredentialResponse(response) {
+            // Decode the JWT token to get user profile
+            const responsePayload = JSON.parse(atob(response.credential.split('.')[1]));
+
+            // Hide sign-in button and show profile
+            document.getElementById('google-signin-container').style.display = 'none';
+            
+            const userProfile = document.getElementById('user-profile');
+            document.getElementById('user-name').innerText = responsePayload.name;
+            document.getElementById('user-email').innerText = responsePayload.email;
+            document.getElementById('user-avatar').src = responsePayload.picture;
+            userProfile.classList.remove('hidden');
+            
+            // Show the main content
+            document.getElementById('main-content').style.display = 'grid';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbxK5mlYEvrYRvvj6iJhigSN1MB7SikrhXUaKDyjwhYO0pz4QzxFVBv9JpdYc9AoQBUu/exec';
+            
+            // --- Auth Elements ---
+            const signOutBtn = document.getElementById('sign-out-btn');
+
+            // --- CRUD Elements ---
+            const saveForm = document.getElementById('saveForm');
+            const deleteForm = document.getElementById('deleteForm');
+            const fetchAllBtn = document.getElementById('fetchAllBtn');
+            const statusDiv = document.getElementById('status');
+            const loader = document.getElementById('loader');
+            const resultsDiv = document.getElementById('results');
+
+            // --- Google Auth Initialization ---
+            window.onload = function () {
+                google.accounts.id.initialize({
+                    // IMPORTANT: Replace this with your own Google Client ID
+                    client_id: "956842956043-sjtr123beoq92bitbkoidd0p42ai1jna.apps.googleusercontent.com",
+                    callback: handleCredentialResponse
+                });
+                google.accounts.id.renderButton(
+                    document.getElementById("google-signin-container"),
+                    { theme: "outline", size: "large", text: "signin_with", shape: "rectangular" }
+                );
+            };
+
+            // --- Sign Out Logic ---
+            signOutBtn.addEventListener('click', () => {
+                 google.accounts.id.disableAutoSelect();
+                 // Hide profile and main content
+                 document.getElementById('user-profile').classList.add('hidden');
+                 document.getElementById('main-content').style.display = 'none';
+                 // Show sign-in button again
+                 document.getElementById('google-signin-container').style.display = 'flex';
+            });
+
+
+            // --- UI Helper Functions ---
+            const showLoader = () => loader.classList.remove('hidden');
+            const hideLoader = () => loader.classList.add('hidden');
+
+            const showStatus = (message, isError = false) => {
+                statusDiv.textContent = message;
+                statusDiv.className = `mb-4 text-center p-3 rounded-md ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
+                statusDiv.classList.remove('hidden');
+                setTimeout(() => statusDiv.classList.add('hidden'), 5000);
+            };
+
+            const renderCards = (data) => {
+                resultsDiv.innerHTML = ''; 
+                if (!data || data.length === 0) {
+                    resultsDiv.innerHTML = `<p class="text-gray-500">No content found.</p>`;
+                    return;
+                }
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-gray-100 p-4 rounded-lg border';
+                    
+                    let tagsHTML = '';
+                    if(item.tags && String(item.tags).trim() !== '') {
+                        tagsHTML = String(item.tags).split(',').map(tag => `<span class="inline-block bg-gray-200 rounded-full px-2 py-1 text-xs font-semibold text-gray-700 mr-2">${tag.trim()}</span>`).join('');
+                    }
+
+                    card.innerHTML = `
+                        <div class="font-bold text-lg text-gray-800">${item.title} (ID: ${item.id})</div>
+                        <p class="text-gray-600 text-sm my-2">${item.content}</p>
+                        <div class="mt-2">${tagsHTML || '<span class="text-xs text-gray-500">No tags</span>'}</div>
+                    `;
+                    resultsDiv.appendChild(card);
+                });
+            };
+
+            // --- API Call Functions ---
+
+            // Fetch All Content (GET)
+            fetchAllBtn.addEventListener('click', async () => {
+                showLoader();
+                resultsDiv.innerHTML = '';
+                try {
+                    const res = await fetch(webAppUrl);
+                    if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
+                    const result = await res.json();
+                    if (result.status === 'error') throw new Error(result.message);
+                    renderCards(result.data);
+                } catch (error) {
+                    showStatus(`Error fetching content: ${error.message}`, true);
+                } finally {
+                    hideLoader();
+                }
+            });
+
+            // Save (Create/Update) Content (POST)
+            saveForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                showLoader();
+                const payload = {
+                    id: document.getElementById('id').value,
+                    title: document.getElementById('title').value,
+                    content: document.getElementById('content').value,
+                    tags: document.getElementById('tags').value,
+                };
+
+                try {
+                    const res = await fetch(webAppUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(payload),
+                        headers: { 'Content-Type': 'application/json' },
+                        redirect: 'follow'
+                    });
+                    if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
+                    const result = await res.json();
+                    if (result.status === 'error') throw new Error(result.message);
+                    showStatus(result.message);
+                    saveForm.reset();
+                    fetchAllBtn.click();
+                } catch (error) {
+                    showStatus(`Error saving content: ${error.message}`, true);
+                } finally {
+                    hideLoader();
+                }
+            });
+
+            // Delete Content (POST with action)
+            deleteForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                showLoader();
+                const idToDelete = document.getElementById('deleteId').value;
+                const payload = {
+                    action: 'delete',
+                    id: idToDelete,
+                };
+                 try {
+                    const res = await fetch(webAppUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(payload),
+                        headers: { 'Content-Type': 'application/json' },
+                        redirect: 'follow'
+                    });
+                    if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
+                    const result = await res.json();
+                    if (result.status === 'error') throw new Error(result.message);
+                    showStatus(result.message);
+                    deleteForm.reset();
+                    fetchAllBtn.click();
+                } catch (error) {
+                    showStatus(`Error deleting content: ${error.message}`, true);
+                } finally {
+                    hideLoader();
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
+

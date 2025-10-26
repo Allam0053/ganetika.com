@@ -120,7 +120,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-primary-dark text-center mb-4">Featured Insights</h2>
                 <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Explore our latest thinking on markets, strategies, and the global economic landscape.</p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div id="insight-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Insight Card 1 -->
                     <div class="bg-white rounded-lg overflow-hidden group">
                         <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Abstract+Market+Graph" alt="Market analysis" class="w-full h-48 object-cover group-hover:opacity-90 transition">
@@ -272,6 +272,54 @@
 
 
     <script>
+        // --- The JavaScript function to fetch the content list ---
+
+        /**
+         * Fetches all content from the Google App Script web app.
+         * @param {string} url - The URL of the deployed Google App Script.
+         * @returns {Promise<Array>} A promise that resolves to an array of content objects.
+         */
+        async function getContentList(url) {
+            try {
+                // Fetch data from the provided URL
+                const response = await fetch(url);
+
+                // Check if the network response was ok
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // Parse the JSON response from the App Script
+                const result = await response.json();
+
+                // Check for an error status in the JSON payload
+                if (result.status === 'error') {
+                    throw new Error(result.message);
+                }
+
+                // Return the data array
+                return result.data;
+
+            } catch (error) {
+                console.error("Failed to fetch content:", error);
+                // Re-throw the error to be caught by the caller
+                throw error;
+            }
+        }
+
+        const cardTemplate = (id, title, content, tags) => `
+            <!-- Insight Card -->
+            <div id="insight-card-${id}" class="bg-white rounded-lg overflow-hidden group">
+                <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Abstract+Market+Graph" alt="${id}" class="w-full h-48 object-cover group-hover:opacity-90 transition">
+                <div class="p-6">
+                    <p class="text-sm text-gold font-semibold mb-2">${tags}</p>
+                    <h3 class="text-xl font-bold text-primary-dark mb-3">${tags}</h3>
+                    <p class="text-gray-600 mb-4">${content}</p>
+                    <a href="#" class="font-semibold text-gold link-arrow">Read More</a>
+                </div>
+            </div>
+        `;
+
         document.addEventListener('DOMContentLoaded', function() {
             const header = document.getElementById('main-header');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -296,6 +344,66 @@
                 mobileMenu.classList.toggle('hidden');
             });
         });
+
+        fetch("https://script.google.com/macros/s/AKfycbxK5mlYEvrYRvvj6iJhigSN1MB7SikrhXUaKDyjwhYO0pz4QzxFVBv9JpdYc9AoQBUu/exec", {
+            method: "GET",
+            redirect: "follow",
+            referrerPolicy:"unsafe-url",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+                "Access-Control-Allow-Origin": '*',
+                "Cookie": 'SEARCH_SAMESITE=CgQI6Z4B; OSID=g.a0001ggXntkg6K7-CKBAAYmtqztEYz71qrZhHGOL3vXwfCYKoLUUNHYdlnCFunGtYtGuxSbNaQACgYKATISARESFQHGX2Mio2dyRd-LVjgGScfeWoXPtRoVAUF8yKq907Q5htvD3Ku8o9UBz9mA0076; __Secure-OSID=g.a0001ggXntkg6K7-CKBAAYmtqztEYz71qrZhHGOL3vXwfCYKoLUUQskHxp6wwM6JytgQQSswyAACgYKAbkSARESFQHGX2MiREmGqujVS8PEw4r4PjRAyxoVAUF8yKr-UxbiDO6y-O7ajnxRbSSc0076; OTZ=8269066_28_28__28_; AEC=AaJma5u1nkpXt-SFS1le0aQdZSnEW1Rdz1quoP4y5IX2IlKvTt2eetIibzw; _gid=GA1.3.1396651656.1760197018; S=billing-ui-v3=T29VxUE3Yx0iSJMCrlB9wBI3OmDF0EeU:billing-ui-v3-efe=T29VxUE3Yx0iSJMCrlB9wBI3OmDF0EeU:maestro=QZhe19o42Qb2sUfAq9ceszYJLN5Ga4vGw4tIMMAFuSU; _ga=GA1.3.171843673.1758447941; SID=g.a0002QgXnns7AokLe3yhOX6m5Qn2kJQgDv8kjHAqeHRUSFq5NJKq3FwSzsAV9TU1OM61FCdIrwACgYKAUoSARESFQHGX2MiiC6TI6XiugJajiFQC8MwGhoVAUF8yKpL9pxMwmcQNuTsLGZaIFrn0076; __Secure-1PSID=g.a0002QgXnns7AokLe3yhOX6m5Qn2kJQgDv8kjHAqeHRUSFq5NJKqQ8D0Ua8WxrKKV_vNW5o04QACgYKAYkSARESFQHGX2MilJcWNobbHdV-1HEsUnLbdxoVAUF8yKrxo4_2hHqpKybQG1aEtajw0076; __Secure-3PSID=g.a0002QgXnns7AokLe3yhOX6m5Qn2kJQgDv8kjHAqeHRUSFq5NJKq5msX42ltqQrUroHj06zTlgACgYKAVESARESFQHGX2MiVpgVcKmm_C9YgzjlWul_SxoVAUF8yKoN9tBeD3bkE7tdYxPuw8oL0076; HSID=AiB6YbB4llkKuVKJu; SSID=ATr-joodoGsdiX3m2; APISID=hAqrMJyvD4VKAXX2/AJcmEvYqvvgu_SfIV; SAPISID=OWOG1Dua2dPAWRhH/Ar9cI_sk1Q7JnR-it; __Secure-1PAPISID=OWOG1Dua2dPAWRhH/Ar9cI_sk1Q7JnR-it; __Secure-3PAPISID=OWOG1Dua2dPAWRhH/Ar9cI_sk1Q7JnR-it; NID=525=cYkMCxDisCRnzZZkcH6Evbcpa3BKb4IciVsf1bf_lekSsYIDluOXVkKU2CuUYgqu8G3ADRnoym5rJb0fzPLPn6xlSK1qQ_6hv5pjsh8XIpdzaGoOG-s0-RTC5Dyg_3hgtYq9XFp3nnVdpnTaEZ_72yff9XtmeWh7Msc_3rI6sGy4i1XydN3kd85IOAzDUIAknpRcVCLquqAQdtO1MFSDITzzZPpvn-TddnaPKifgHMnlFWOg25n0xg-ij0KjL8gxmugj70AuKblHdJvgxkqoTCDv8zL9EsWlEX7vqyDC1RcEI9FqYtKp8r1WQCj_biqCqmqb8TpPRdQedeuRBAGqP6TCEvQGxi2VIVJqlykNB2e2iu0k1xt6xZyPUrh3fI83uJTXpR_UMWtKorIroHnd_MggdL95drYCBVH_VUDJa5WqmoHECK9YRfAY-nhHF86w1FaJYTT4BkfBFsit5_RUL-bmcRIhxhURvZOmx0aEYehh60gbWYvtz4OKv_3MaKUTAdLc0WHbQAG3JHsObJKJXqT7zWM3x-CbadtbcEMO6p7h450ceaA6PINafWI_cN4Tt_XArCUiA-WFmDaA7KCGh64XQUV3g_lVxqUHYTcA2Es1dqGXd3Rfxmr-F8BztkfzjssPY7m3sUt_TvF2i93aw5OeWLiawKqcglX06v6uIbEMDqS75WPs9YOy1ko5RiyvMLALme92SB_HbTM8ZO4mJwB_y6ZLOZYbYc9WGjz3PG-pGTGoihsCio6eWbzLU0eXYPeo3x9EZkBJKuFKf8JZVKKjQY9NT2Js35q9tLM9v_7U-jkOros_lmbRL9weTA8nQN_hwCg6XsImz46NCy35KunowHLIF5N1yZWMVyskK0HXvAreaK7PuCGWGvqqWI1wBS5AzSeET_POui7wtMdUnRSO7HHXQTtCzlbJPuc5vt6fZzmhiQX_1FVJ1T_B5TfIXf27nKNS8f4nlSpt6gZmz7GSGtNua-srNKnQpoU1l_AlGdynTXrEseJ_qoupGgjei6xIGmX9_BljVWh2LsWCaM4AvCnPpzasExkXQDlz56b-h-_BDN_9ff4yGDkuSECrcZbrLNXMSKUMWd4WfjRgzRKCxIANrfu2yMqBdtKK5biPBK401zhKQkzHLB0qxHQ1THS3u8vU; __Secure-1PSIDTS=sidts-CjEBmkD5S0AI0nYN1F-0UBc5FkM8RkUQeveHQp4Ouriz19eMgYjF1fsJ7fOi-jqbfmhpEAA; __Secure-3PSIDTS=sidts-CjEBmkD5S0AI0nYN1F-0UBc5FkM8RkUQeveHQp4Ouriz19eMgYjF1fsJ7fOi-jqbfmhpEAA; _ga_60Q1X42Z2X=GS2.1.s1760207176$o6$g1$t1760207460$j58$l0$h0; _ga_S6TL92G5N1=GS2.1.s1760207176$o6$g1$t1760207460$j58$l0$h0; SIDCC=AKEyXzXA8xAcFgwozUJGFg9_3Grfo1iUxjBXka9MXxCjn2gdtpcZrj9fNWuW9CIwqiClZSb-rdeB; __Secure-1PSIDCC=AKEyXzWGupbL6cSNe-276yYigw4sxiRkKqDZwwsC_4z8WR00hXUbYeDzxvwIuCxLW1ZTkL9dUtb7; __Secure-3PSIDCC=AKEyXzU1qsiiGk8NJM3EU6tNcQf0DAcoISptG8CIq-332rEZVJsEIBUQXCEWQoi5HnJYVxNZ4Yty'
+            }})
+            .then(res => res.json())
+            .then(data => {
+                const insightCardsContainer = document.querySelector('#insight-cards');
+                
+                if (!insightCardsContainer) {
+                    return;
+                }
+
+                const cardDatas = data.data;
+
+                const renderCard = cardDatas.map((cd) => {
+                    return cardTemplate(cd.id, cd.title, cd.content, cd.tags);
+                }).join('\n');
+
+                insightCardsContainer.innerHTML = renderCard;
+            })
+            .catch(err => console.error("Error:", err));
+
+        fetch("https://script.google.com/macros/s/AKfycbxK5mlYEvrYRvvj6iJhigSN1MB7SikrhXUaKDyjwhYO0pz4QzxFVBv9JpdYc9AoQBUu/exec", {
+            method: "POST",
+            redirect: "follow",
+            referrerPolicy:"no-referrer",
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+                "Access-Control-Allow-Origin": '*',
+                "Cookie": 'SEARCH_SAMESITE=CgQI6Z4B; OSID=g.a0001ggXntkg6K7-CKBAAYmtqztEYz71qrZhHGOL3vXwfCYKoLUUNHYdlnCFunGtYtGuxSbNaQACgYKATISARESFQHGX2Mio2dyRd-LVjgGScfeWoXPtRoVAUF8yKq907Q5htvD3Ku8o9UBz9mA0076; __Secure-OSID=g.a0001ggXntkg6K7-CKBAAYmtqztEYz71qrZhHGOL3vXwfCYKoLUUQskHxp6wwM6JytgQQSswyAACgYKAbkSARESFQHGX2MiREmGqujVS8PEw4r4PjRAyxoVAUF8yKr-UxbiDO6y-O7ajnxRbSSc0076; OTZ=8269066_28_28__28_; AEC=AaJma5u1nkpXt-SFS1le0aQdZSnEW1Rdz1quoP4y5IX2IlKvTt2eetIibzw; _gid=GA1.3.1396651656.1760197018; S=billing-ui-v3=T29VxUE3Yx0iSJMCrlB9wBI3OmDF0EeU:billing-ui-v3-efe=T29VxUE3Yx0iSJMCrlB9wBI3OmDF0EeU:maestro=QZhe19o42Qb2sUfAq9ceszYJLN5Ga4vGw4tIMMAFuSU; _ga=GA1.3.171843673.1758447941; SID=g.a0002QgXnns7AokLe3yhOX6m5Qn2kJQgDv8kjHAqeHRUSFq5NJKq3FwSzsAV9TU1OM61FCdIrwACgYKAUoSARESFQHGX2MiiC6TI6XiugJajiFQC8MwGhoVAUF8yKpL9pxMwmcQNuTsLGZaIFrn0076; __Secure-1PSID=g.a0002QgXnns7AokLe3yhOX6m5Qn2kJQgDv8kjHAqeHRUSFq5NJKqQ8D0Ua8WxrKKV_vNW5o04QACgYKAYkSARESFQHGX2MilJcWNobbHdV-1HEsUnLbdxoVAUF8yKrxo4_2hHqpKybQG1aEtajw0076; __Secure-3PSID=g.a0002QgXnns7AokLe3yhOX6m5Qn2kJQgDv8kjHAqeHRUSFq5NJKq5msX42ltqQrUroHj06zTlgACgYKAVESARESFQHGX2MiVpgVcKmm_C9YgzjlWul_SxoVAUF8yKoN9tBeD3bkE7tdYxPuw8oL0076; HSID=AiB6YbB4llkKuVKJu; SSID=ATr-joodoGsdiX3m2; APISID=hAqrMJyvD4VKAXX2/AJcmEvYqvvgu_SfIV; SAPISID=OWOG1Dua2dPAWRhH/Ar9cI_sk1Q7JnR-it; __Secure-1PAPISID=OWOG1Dua2dPAWRhH/Ar9cI_sk1Q7JnR-it; __Secure-3PAPISID=OWOG1Dua2dPAWRhH/Ar9cI_sk1Q7JnR-it; NID=525=cYkMCxDisCRnzZZkcH6Evbcpa3BKb4IciVsf1bf_lekSsYIDluOXVkKU2CuUYgqu8G3ADRnoym5rJb0fzPLPn6xlSK1qQ_6hv5pjsh8XIpdzaGoOG-s0-RTC5Dyg_3hgtYq9XFp3nnVdpnTaEZ_72yff9XtmeWh7Msc_3rI6sGy4i1XydN3kd85IOAzDUIAknpRcVCLquqAQdtO1MFSDITzzZPpvn-TddnaPKifgHMnlFWOg25n0xg-ij0KjL8gxmugj70AuKblHdJvgxkqoTCDv8zL9EsWlEX7vqyDC1RcEI9FqYtKp8r1WQCj_biqCqmqb8TpPRdQedeuRBAGqP6TCEvQGxi2VIVJqlykNB2e2iu0k1xt6xZyPUrh3fI83uJTXpR_UMWtKorIroHnd_MggdL95drYCBVH_VUDJa5WqmoHECK9YRfAY-nhHF86w1FaJYTT4BkfBFsit5_RUL-bmcRIhxhURvZOmx0aEYehh60gbWYvtz4OKv_3MaKUTAdLc0WHbQAG3JHsObJKJXqT7zWM3x-CbadtbcEMO6p7h450ceaA6PINafWI_cN4Tt_XArCUiA-WFmDaA7KCGh64XQUV3g_lVxqUHYTcA2Es1dqGXd3Rfxmr-F8BztkfzjssPY7m3sUt_TvF2i93aw5OeWLiawKqcglX06v6uIbEMDqS75WPs9YOy1ko5RiyvMLALme92SB_HbTM8ZO4mJwB_y6ZLOZYbYc9WGjz3PG-pGTGoihsCio6eWbzLU0eXYPeo3x9EZkBJKuFKf8JZVKKjQY9NT2Js35q9tLM9v_7U-jkOros_lmbRL9weTA8nQN_hwCg6XsImz46NCy35KunowHLIF5N1yZWMVyskK0HXvAreaK7PuCGWGvqqWI1wBS5AzSeET_POui7wtMdUnRSO7HHXQTtCzlbJPuc5vt6fZzmhiQX_1FVJ1T_B5TfIXf27nKNS8f4nlSpt6gZmz7GSGtNua-srNKnQpoU1l_AlGdynTXrEseJ_qoupGgjei6xIGmX9_BljVWh2LsWCaM4AvCnPpzasExkXQDlz56b-h-_BDN_9ff4yGDkuSECrcZbrLNXMSKUMWd4WfjRgzRKCxIANrfu2yMqBdtKK5biPBK401zhKQkzHLB0qxHQ1THS3u8vU; __Secure-1PSIDTS=sidts-CjEBmkD5S0AI0nYN1F-0UBc5FkM8RkUQeveHQp4Ouriz19eMgYjF1fsJ7fOi-jqbfmhpEAA; __Secure-3PSIDTS=sidts-CjEBmkD5S0AI0nYN1F-0UBc5FkM8RkUQeveHQp4Ouriz19eMgYjF1fsJ7fOi-jqbfmhpEAA; _ga_60Q1X42Z2X=GS2.1.s1760207176$o6$g1$t1760207460$j58$l0$h0; _ga_S6TL92G5N1=GS2.1.s1760207176$o6$g1$t1760207460$j58$l0$h0; SIDCC=AKEyXzXA8xAcFgwozUJGFg9_3Grfo1iUxjBXka9MXxCjn2gdtpcZrj9fNWuW9CIwqiClZSb-rdeB; __Secure-1PSIDCC=AKEyXzWGupbL6cSNe-276yYigw4sxiRkKqDZwwsC_4z8WR00hXUbYeDzxvwIuCxLW1ZTkL9dUtb7; __Secure-3PSIDCC=AKEyXzU1qsiiGk8NJM3EU6tNcQf0DAcoISptG8CIq-332rEZVJsEIBUQXCEWQoi5HnJYVxNZ4Yty'
+            },
+            body: JSON.stringify({
+                id: 1,
+                content: "The impact of interest rate hikes on stock valuations"
+            })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const insightCardsContainer = document.querySelector('#insight-cards');
+                
+                if (!insightCardsContainer) {
+                    return;
+                }
+
+                const cardDatas = data.data;
+
+                const renderCard = cardDatas.map((cd) => {
+                    return cardTemplate(cd.id, cd.title, cd.content, cd.tags);
+                }).join('\n');
+
+                insightCardsContainer.innerHTML = renderCard;
+            })
+            .catch(err => console.error("Error:", err));
+
     </script>
 </body>
 </html>

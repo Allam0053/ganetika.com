@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content from Spreadsheet</title>
+    <!-- Using Tailwind CSS for some basic styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Simple styling for the loading spinner */
+        .loader {
+            border-top-color: #3498db;
+            -webkit-animation: spinner 1.5s linear infinite;
+            animation: spinner 1.5s linear infinite;
+        }
+
+        @-webkit-keyframes spinner {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spinner {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <div class="container mx-auto p-8">
+        <h1 class="text-3xl font-bold mb-4 text-gray-800">Available Content</h1>
+        <p class="text-gray-600 mb-6">This page fetches and displays data directly from a Google Sheet via a Google App Script.</p>
+        
+        <!-- Button to trigger the fetch -->
+        <button id="fetchButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+            Fetch Content
+        </button>
+
+        <!-- Container for the results -->
+        <div id="results" class="mt-6">
+            <div id="loader" class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-24 w-24 mx-auto hidden"></div>
+            <div id="error" class="text-red-500 bg-red-100 p-4 rounded-lg hidden"></div>
+            <ul id="contentList" class="list-disc list-inside bg-white p-6 rounded-lg shadow-md">
+                <!-- Content will be inserted here by JavaScript -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // --- The JavaScript function to fetch the content list ---
+
+        /**
+         * Fetches all content from the Google App Script web app.
+         * @param {string} url - The URL of the deployed Google App Script.
+         * @returns {Promise<Array>} A promise that resolves to an array of content objects.
+         */
+        async function getContentList(url) {
+            try {
+                // Fetch data from the provided URL
+                const response = await fetch(url);
+
+                // Check if the network response was ok
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // Parse the JSON response from the App Script
+                const result = await response.json();
+
+                // Check for an error status in the JSON payload
+                if (result.status === 'error') {
+                    throw new Error(result.message);
+                }
+
+                // Return the data array
+                return result.data;
+
+            } catch (error) {
+                console.error("Failed to fetch content:", error);
+                // Re-throw the error to be caught by the caller
+                throw error;
+            }
+        }
+
+        // --- Example of how to use the function ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const fetchButton = document.getElementById('fetchButton');
+            const resultsContainer = document.getElementById('results');
+            const contentList = document.getElementById('contentList');
+            const loader = document.getElementById('loader');
+            const errorContainer = document.getElementById('error');
+            
+            // Your deployed Google App Script URL
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbxK5mlYEvrYRvvj6iJhigSN1MB7SikrhXUaKDyjwhYO0pz4QzxFVBv9JpdYc9AoQBUu/exec';
+
+            fetchButton.addEventListener('click', async () => {
+                // Reset UI
+                contentList.innerHTML = '';
+                errorContainer.classList.add('hidden');
+                loader.classList.remove('hidden');
+                fetchButton.disabled = true;
+
+                try {
+                    // Call the function and wait for the data
+                    const content = await getContentList(webAppUrl);
+                    
+                    // Clear list and display a message if no content is found
+                    if (content.length === 0) {
+                        contentList.innerHTML = '<li class="text-gray-500">No content found in the spreadsheet.</li>';
+                    } else {
+                        // Populate the list with the fetched data
+                        content.forEach(item => {
+                            const li = document.createElement('li');
+                            li.className = 'text-gray-700 py-1';
+                            li.textContent = `ID ${item.id}: ${item.content}`;
+                            contentList.appendChild(li);
+                        });
+                    }
+                } catch (error) {
+                    // Display error message to the user
+                    errorContainer.textContent = `Error: ${error.message}`;
+                    errorContainer.classList.remove('hidden');
+                } finally {
+                    // Hide loader and re-enable button
+                    loader.classList.add('hidden');
+                    fetchButton.disabled = false;
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

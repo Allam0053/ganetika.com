@@ -1,0 +1,10 @@
+id,created_at,title,content,tag
+2,2025-10-21 00:05:00+00,"How to Learn JavaScript Fast","JavaScript is one of the most popular languages in web development. In this guide, we’ll show you efficient strategies to learn JS quickly.","programming,javascript,learning"
+3,2025-10-21 00:10:00+00,"Top 5 Investment Strategies for 2025","With market volatility increasing, these five strategies can help investors minimize risk and maximize return.","finance,investment,stocks"
+4,2025-10-21 00:15:00+00,"Best Coffee Brewing Methods","From French press to pour-over, explore the most effective coffee brewing methods for different taste profiles.","food,coffee,lifestyle"
+5,2025-10-21 00:20:00+00,"Beginner’s Guide to Meditation","Meditation can reduce stress and improve focus. Here’s a simple step-by-step guide to start meditating today.","mindfulness,mental health,meditation"
+6,2025-10-21 00:25:00+00,"Exploring the Future of AI","Artificial Intelligence continues to evolve. This article explores the most promising trends shaping its future.","technology,AI,future"
+7,2025-10-21 00:30:00+00,"Simple Home Workout Routine","No gym? No problem. Try this 20-minute home workout routine to stay fit and energized.","fitness,health,exercise"
+8,2025-10-21 00:35:00+00,"Top 10 Travel Destinations in Asia","Discover the best travel spots across Asia — from Bali’s beaches to Tokyo’s neon lights.","travel,asia,destinations"
+9,2025-10-21 00:40:00+00,"Mastering CSS Grid Layout","CSS Grid allows for complex, responsive layouts with minimal code. Learn how to master it in this tutorial.","webdev,css,frontend"
+10,2025-10-21 00:45:00+00,"The Psychology of Motivation","Understand what drives human behavior and how to harness motivation to achieve your goals.","psychology,motivation,self-improvement"
