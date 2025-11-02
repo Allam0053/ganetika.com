@@ -1,47 +1,99 @@
-<span class="translatable-message"><strong>[Quick Update: BMRI]
-</strong>
-Bank Mandiri mencatat <strong>laba bersih Rp24,5 triliun (-7,9% YoY)</strong> pada 1H25, atau baru 43–44% dari target dan <strong>di bawah ekspektasi pasar</strong>. Laba bersih tertekan karena <strong>kenaikan beban operasional sebesar 25%</strong> secara YoY.
+<span class="translatable-message"><strong>[Quick Review: MEDC]</strong>
 
-<img src="assets/img/emoji/1f4cc.png" class="emoji emoji-image" alt="📌"> <strong>Highlights</strong>
+MEDC adalah produsen oil &amp; gas dan juga memiliki 21% saham AMMN, tambang emas terbesar ke-2 di Indonesia setelah Freeport.
 
-- <strong>Net profit:</strong> Rp11,3 triliun di Q2 2025 (-15% QoQ, -19% YoY). 1H 2025 Rp 24.5T (-7.89% Yoy)
+Juni kemarin, MEDC baru menuntaskan akuisisi 24% hak partisipasi dari 46% jadi 70%.
 
-- <strong>NIM:</strong> 4,92%, turun dari 5.09% pada 2024. Turun karena kenaikan Cost of fund
+Lalu mereka juga berencana terus buyback saham hingga triliunan</span>
 
-- <strong>CIR:</strong> melonjak ke <strong>48%</strong> akibat *one-off adjustment*
+<span class="translatable-message">Bagi member lama, Anda bisa baca lebih detail soal bisnis MEDC di analisa saham. Kita pernah punya kenangan manis di MEDC tahun 2022, bedah bisnisnya juga 3 tahun lalu, tapi masih relevan kok secara bisnis.</span>
 
-- <strong>Kredit tumbuh 11% YoY</strong> ke Rp1.701 triliun yang didorong oleh segmen korporasi (+36%) dan komersial (+24%). Loan terbesar BMRI adalah ke segmen FMCG, CPO, transportasi dan konstruksi.
+<span class="translatable-message"><strong>Business Overview</strong>
 
-- <strong>CASA ratio</strong> masih tinggi di <strong>74%</strong>, meski sedikit turun dari 75% tahun lalu
+Secara produksi roughly 70-80% gas, 20-30% oil. Harga jual oil mengikuti market (acuannya Brent) jadi bisa fluktuasi. Harga gas, itu 50% sudah fixed di $5.8 - $5.9/mmbtu, sisanya 20% itu ngikut harga Brent.
 
-- <strong>Asset quality:</strong> NPL 1,2%, LaR 6,9%, coverage 246%, CoC hanya 0,8–0,9%
+Jadi kasarnya, roughly 50% harga jual fixed, 50% harga jual ngikut brent. Nah gimana dengan harga brent?</span>
 
-<img src="assets/img/emoji/1f4a1.png" class="emoji emoji-image" alt="💡"> <strong>One-Off Adjustment</strong>
+![alt text](image-4.png)
 
-Beban besar di Juni 2025 berasal dari <strong>penyesuaian pengakuan biaya</strong>. Btw, management ga merinci soal ini, tapi dari sini kita tahu bahwa kenaikan beban ini sifatnya sementara saja. Manajemen juga menargetkan <strong>CIR normal kembali ke 40–42% di 2026</strong>.</span>
+<span class="translatable-message">Harga Brent cukup rendah dalam beberapa tahun terakhir. Selain karena pertumbuhan ekonomi global yang melambat, US juga terus menerus menjual cadangan minyaknya (strategic petroleum reserves). Hal ini membuat supply minyak banjir di market dan harga cukup turun).
 
-![alt text](image.png)
+Namun, perkembangan terakhir, US mulai akan kembali mengisi SPR nya.
 
-![alt text](image-1.png)
+Furter reference: <a class="anchor-url" href="http://bloomberg.com/news/articles/2025-10-21/us-to-buy-1-million-barrels-for-strategic-petroleum-reserve" target="_blank" rel="noopener noreferrer">http://bloomberg.com/news/articles/2025-10-21/us-to-buy-1-million-barrels-for-strategic-petroleum-reserve</a>
 
-<span class="translatable-message"><strong><img src="assets/img/emoji/1f4ca.png" class="emoji emoji-image" alt="📊"> Valuasi</strong>
+Oil di harga &lt;$70 agak kurang sustain, karena cost produksi dan eksplorasi bisa mencapai $70 di beberapa tempat.
 
-- Valuasi BMRI berada pada posisi all time low dalam 5 tahun terakhir. Sebagai catatan, BMRI pernah di valuasi PE 6, PBV 0.9 saat covid. Sekarang di PE 7 dan PBV 1.5
+So, kalo harga oil naik, MEDC juga akan terkena dampak karena harga acuan mereka ngikut Brent.</span>
 
-- Penurunan valuasi BMRI menurut kita karena turunnya kinerja BMRI di tahun ini. Mostly juga karena high base di tahun lalu, ketatnya likuiditas dan peningkatan suku bunga yang menekan profit BMRI.</span>
+<span class="translatable-message"><strong>AMMN ga bisa jualan</strong>
 
-<span class="translatable-message">- Selain itu, asing yang terus menerus net sell menekan harga terus turun. Asing yang terus net sell kelihatannya karena perubahan bobot saham di MSCI.
+Per 2025, AMMN mengalami kerugian besar. Hal ini karena mereka ga diperbolehkan jualan concentrate dan harus diolah dulu gold &amp; copper nya.
 
-- BPJS Ketenagakerjaan di sisi lain mulai menambah investasi mereka di saham. Dana kelolaan BPJS Ketenagakerjaan &gt;Rp 800 T dan bobot saham akan ditingkatkan ke 10%. Hal ini mengonfirmasi rencana BPJS di bulan April 2025 yang akan menaikkan porsi ke 20%. (source: <a class="anchor-url" href="https://www.idnfinancials.com/id/news/53776/bpjs-tk-akan-gandakan-porsi-di-saham-potensi-inflow-rp27-triliun" target="_blank" rel="noopener noreferrer">https://www.idnfinancials.com/id/news/53776/bpjs-tk-akan-gandakan-porsi-di-saham-potensi-inflow-rp27-triliun</a>
+Nah di Q2 kemarin mereka uda berhasil ngolah copper nya jadi cathode dan uda bisa jualan. Lalu di bulan Juli (Q3) mereka uda berhasil commissioning pabrik emasnya.
 
-- Dengan adanya tambahan inflow dari BPJS, bisa memberikan tambahan inflow ke BMRI dan big banks lainnya. Sebagai konteks, outflow asing dari BMRI sebesar ~Rp 20 T secara YTD.</span>
+Total kapasitasnya 220 ribu ton (440 Mlbs) copper dan 579ribu oz emas. Setahu saya, smelter copper cuma ada 2 di Indonesia, yaitu milik Freeport dan milik AMMN.</span>
 
-<span class="translatable-message"><img src="assets/img/emoji/1f9e0.png" class="emoji emoji-image" alt="🧠"> <strong>POV Midas</strong>
+<span class="translatable-message">Berikut development timelinenya AMMN.</span>
 
-Secara bisnis, big banks generally cukup oke. Tekanan kinerja juga menurut kita sementara, tidak struktural. Sambil menunggu BMRI kembali ke harga wajar, kita masih bisa dapat dividen 8%. Kalau BMRI bisa tumbuh 7% setelah kondisinya membaik, return 15% per tahun. Not bad.
+![alt text](image-5.png)
 
-Kita tetap watch BMRI, tapi apakah artinya akan perform dalam waktu pendek? Tidak tahu. Tapi kalau Anda punya time horizon investasi 3 tahun atau lebih (tanyakan ke diri sendiri, sanggup nunggu ga?), harga BMRI sangat menarik.
+<span class="translatable-message">Harga jual gold di Q3 dan memasuki Q4 ini juga terlihat naik. So ketika smelter gold &amp; coppernya jika sudah bisa jualan, tentu akan kasih dampak yang positif bagi AMMN dan juga bagi MEDC.</span>
 
-Harga BMRI hari ini seperti harganya di tahun 2018. Padahal laba 6M 2025 saja sudah sama seperti laba setahun penuh di tahun 2018. CASA hampir 2x lipat, loan 2x lipat. Apakah menurut Anda Mr Market rasional?
+![alt text](image-6.png)
 
-—</span>
+<span class="translatable-message"><strong>Berapa laba MEDC Nanti?</strong>
+
+Kita pake asumsi harga brent di kisaran $70 - 80 saja, karena ini harga yang make sense bagi produsen. Ga kerendahan, ga ketinggian. Kita tahu MEDC akuisisi tambahan 24% di PSC Corridor, artinya bagian mereka juga nambah roughly 50% kan (46% jadi 70% naik roughly 50%).
+
+Kita tinggal cek saja berapa laba mereka ketika oil di $70 - 80, yaitu tahun lalu. Laba sebelum pajak $671 juta, kita kurangin laba dari AMMN $113 juta saat itu = $558 juta.
+
+Tahun 2024 produksinya 152 mboepd, per 1H 2025 setelah akuisisi tambahan 24% Corridor, produksi bisa jadi 155 - 160, naik cuma 5%. Yah ini karena by nature, year by year produksi di sumur oil &amp; gas memang akan turun.
+
+Intinya kita bisa kira - kira, harusnya laba sebelum pajak bisa lah tetap $558 juta (Rp 9.4T) dan harusnya sih bisa lebih dari Rp 10 T.</span>
+
+<span class="translatable-message"><strong>Lalu untuk AMMN..</strong>
+Let say produksi copper &amp; gold bisa 80% capacity.
+
+Smelter AMMN bisa produksi 220 ribu ton Copper Cathode, 80% dari itu 176 ribu ton.
+
+Kaliin harga jual $10ribu/ton = $1.76 miliar.
+
+Kapasitas Gold 579kOz x 80% x ASP $3500/oz (estimasi aja) = $1.62 miliar
+
+Total sales $3.38 miliar kan. Buletin $3.5 miliar deh, Rp 58 T.</span>
+
+<span class="translatable-message">EBITDA margin (istilah lainnya cash margin, yaitu ASP - cash cost) di Q2 2025 mencapai 71%. Di Q2 kita tahu smelternya sudah jalan kan. Artinya komponen cost besar itu kemungkinan dari depresiasi dan amortisasi, serta beban bunga saja. Kira2 EBITDA Rp 41 T.
+
+Beban bunga AMMN sekitar 6% dari debt. Debt AMMN itu sekitar $6 bio, jadi beban bunga $360 jt atau Rp 6T.
+
+Beban depresiasi dari aset tetap dibagi aja masa manfaat aset tersebut. Kalo dilihat dari LK, beban depresiasi roughly $200 jt per tahun, ya taroklah kasarnya jadi $250 juta. Rp 4.2T.
+
+Jadi laba AMMN = (Rp 41 T - Rp 6 T - 4.2 T) - 22% tax = Rp 24 T. Bagian MEDC 21% = Rp 4 T.
+
+Dari hitung - hitungan kasar ini, <strong>keliatannya laba MEDC bisa melebihi laba 2022 nya</strong> yang di kisaran Rp 8 T atau setidaknya menyamai.</span>
+
+<span class="translatable-message">Ini belum termasuk ekspansi ini yang uda mau selesai, efeknya di Q1 2026</span>
+
+![alt text](image-7.png)
+
+<span class="translatable-message"><strong>Valuasi</strong>
+
+Let say asumsi PE 8 x Rp 8 T (angka cantik banget haha) = Rp 64 T seharusnya harga wajar MEDC.
+
+Market cap per tulisan ini dibuat Rp 35 T. Ada margin of safety yang lumayan 45%. Ya taroklah perkiraan saya salah dan meleset jadi Rp 55 T. Maybe ada hal - hal yang tidak saya duga, oil turun lagi, smelternya telat, etc. Diskonnya masih lumayan.
+
+Kalo ternyata labanya lebih tinggi, ya bagus.</span>
+
+<span class="translatable-message"><strong>Risk</strong>
+
+Don’t forget about risk, penting ini:
+
+- MEDC dan AMMN, keduanya punya debt cukup tinggi. Tapi keduanya punya cash flow yang lebih dari cukup buat bayar debt.
+- Oil, Copper &amp; Gold turun. Kalo ketiga komoditas ini turun, jelas ngefek banget ke harga jual dan laba MEDC/AMMN. Tapi ya kalo disuruh prediksi, harusnya oil yang naik, gantian dong masa gold mulu.
+
+Kalo tertarik, silahkan dalami dan adjust your risk accordingly. Jangan juga masuk kegedean, buat apa hold tapi deg - degan, ga bisa makan, ga bisa tidur.
+
+Jangan all in, apalagi masih pemula. Jangan juga ngikutin saya. Ingat mantra ini: Orang yang ngikut aja, ga mungkin cuan besar. Orang yang cuan besar, ga mungkin cuma ikut - ikutan.
+
+Have a great day! Semoga ulasan ini bermanfaat.</span>
