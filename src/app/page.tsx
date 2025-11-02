@@ -285,13 +285,13 @@ export default function HomePage() {
   );
 }
 
-function InsightCard(id: string | number, title: string, content: string, tags: string) {
+function InsightCard(id: string | number, title: string, content: string, tags?: string) {
   return (
     <div id="insight-card-${id}" className="bg-white rounded-lg overflow-hidden group">
       <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Abstract+Market+Graph" alt="${id}" className="w-full h-48 object-cover group-hover:opacity-90 transition"/>
       <div className="p-6">
         <p className="text-sm text-gold font-semibold mb-2">{tags}</p>
-        <h3 className="text-xl font-bold text-primary-dark mb-3">{tags}</h3>
+        <h3 className="text-xl font-bold text-primary-dark mb-3">{title}</h3>
         <p className="text-gray-600 mb-4">{content}</p>
         <a href="#" className="font-semibold text-gold link-arrow">Read More</a>
       </div>

@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import { supabase } from '@/lib/utils'
 
@@ -24,8 +27,15 @@ async function getPosts() {
   return data as Post[]
 }
 
-export default async function ArticlesList() {
-  const posts = await getPosts()
+export default function ArticlesList() {
+  const [posts, setPosts] = useState([] as Post[]);
+
+  useEffect(() => {
+    (async () => {
+      const postsRes = await getPosts();
+      setPosts(postsRes);
+    })();
+  }, [])
 
   return (
     <div style={{ padding: '20px' }}>
