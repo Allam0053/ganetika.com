@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <!-- PNG format -->
     <link rel="icon" type="image/jpg" sizes="32x32" href="/favicon.jpg" />
@@ -41,6 +44,7 @@
 
     <!-- Optional: theme color for mobile browsers -->
     <meta name="theme-color" content="#ffffff" />
+
     <style>
         /* Custom styles to match the Oaktree aesthetic */
         body {
@@ -164,40 +168,11 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-primary-dark text-center mb-4">Featured Insights</h2>
                 <p class="text-center text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Explore our latest thinking on markets, strategies, and the global economic landscape.</p>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Insight 1 --><div class="bg-white rounded-lg overflow-hidden group">
-                        <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Abstract+Market+Graph" alt="Market analysis" class="w-full h-48 object-cover group-hover:opacity-90 transition">
-                        <div class="p-6">
-                            <p class="text-sm text-gold font-semibold mb-2">Market Commentary</p>
-                            <h3 class="text-xl font-bold text-primary-dark mb-3">Navigating Market Volatility in 2025</h3>
-                            <p class="text-gray-600 mb-4">A look at the key indicators and strategic positioning for the second half of the year.</p>
-                            <a href="#" class="font-semibold text-gold link-arrow">Read More</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Insight 2 --><div class="bg-white rounded-lg overflow-hidden group">
-                        <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Sustainable+Energy" alt="Sustainable Investing" class="w-full h-48 object-cover group-hover:opacity-90 transition">
-                        <div class="p-6">
-                            <p class="text-sm text-gold font-semibold mb-2">Sustainable Investing</p>
-                            <h3 class="text-xl font-bold text-primary-dark mb-3">The Future of Green Bonds and Credit</h3>
-                            <p class="text-gray-600 mb-4">How ESG factors are creating new opportunities in the sustainable credit markets.</p>
-                            <a href="#" class="font-semibold text-gold link-arrow">Read More</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Insight 3 --><div class="bg-white rounded-lg overflow-hidden group">
-                        <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Global+Logistics" alt="Real Assets" class="w-full h-48 object-cover group-hover:opacity-90 transition">
-                        <div class="p-6">
-                            <p class="text-sm text-gold font-semibold mb-2">Real Assets</p>
-                            <h3 class="text-xl font-bold text-primary-dark mb-3">Industrial Real Estate: A New Era</h3>
-                            <p class="text-gray-600 mb-4">Analyzing the trends in logistics and supply chain that are driving value in real assets.</p>
-                            <a href="#" class="font-semibold text-gold link-arrow">Read More</a>
-                        </div>
-                    </div>
+                <div id="insights-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <p class="text-gray-500">Loading insights...</p>
                 </div>
                 
-                <!-- Substack Embed --><div class="mt-20 text-center max-w-xl mx-auto">
+                <div class="mt-20 text-center max-w-xl mx-auto">
                     <h3 class="text-2xl font-bold text-primary-dark mb-3">Subscribe to Our Memos</h3>
                     <p class="text-gray-600 mb-6">Receive our latest investment memos and partnership letters directly in your inbox.</p>
                     <div class="flex justify-center">
@@ -358,13 +333,13 @@
     </footer>
 
 
-    <script>
+    <script defer>
         document.addEventListener('DOMContentLoaded', function() {
+            // --- Header Scroll Logic ---
             const header = document.getElementById('main-header');
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-
-            // Header scroll effect
+            
             const handleScroll = () => {
                 if (window.scrollY > 50) {
                     if (header) {
@@ -381,15 +356,94 @@
             
             window.addEventListener('scroll', handleScroll);
             handleScroll(); // Run on page load
-
-            // Mobile menu toggle
+            
+            // --- Mobile Menu Logic ---
             if (mobileMenuButton && mobileMenu) {
                 mobileMenuButton.addEventListener('click', () => {
                     mobileMenu.classList.toggle('hidden');
                 });
             }
+            
+            // --- 
+            // NEW SUPABASE FETCH LOGIC
+            // ---
+            // 1. Add your Supabase details here
+            const SUPABASE_URL = 'https://yrlpnxyyoegmlaqknbfv.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlybHBueHl5b2VnbWxhcWtuYmZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA5NzUxMTAsImV4cCI6MjA3NjU1MTExMH0.Kud2K-fkpQ9LI3thNUMA08_3Uh220_ty7i1ixgcJf1Q';
+            
+
+            // 2. Initialize the client
+            const { createClient } = supabase;
+            const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+            // 3. Helper function to truncate text
+            function truncate(text, length) {
+                if (text.length <= length) {
+                    return text;
+                }
+                return text.substring(0, length) + '...';
+            }
+            
+            // 4. Helper function to capitalize
+            function capitalize(text) {
+                if (!text) return '';
+                return text.charAt(0).toUpperCase() + text.slice(1);
+            }
+
+            // 5. Function to fetch and render posts
+            async function loadInsights() {
+                const gridContainer = document.getElementById('insights-grid');
+                if (!gridContainer) return;
+
+                try {
+                    // Fetch the 3 most recent posts
+                    const { data, error } = await supabaseClient
+                        .from('content') // Make sure 'posts' is your table name
+                        .select('*')
+                        .order('created_at', { ascending: false });
+
+                    if (error) {
+                        throw error;
+                    }
+
+                    if (data.length === 0) {
+                        gridContainer.innerHTML = '<p class="text-gray-500">No insights found.</p>';
+                        return;
+                    }
+
+                    // Clear the loading message
+                    gridContainer.innerHTML = '';
+
+                    // Loop through posts and create HTML
+                    data.forEach(post => {
+                        const firstTag = post.tag ? post.tag.split(',')[0] : 'Insight';
+                        
+                        const postCardHtml = `
+                        <div class="bg-white rounded-lg overflow-hidden group">
+                            <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=${capitalize(firstTag)}" alt="${post.title}" class="w-full h-48 object-cover group-hover:opacity-90 transition">
+                            <div class="p-6">
+                                <p class="text-sm text-gold font-semibold mb-2">${capitalize(firstTag)}</p>
+                                <h3 class="text-xl font-bold text-primary-dark mb-3">${post.title}</h3>
+                                <p class="text-gray-600 mb-4">${truncate(post.content, 120)}</p>
+                                <a href="#" class="font-semibold text-gold link-arrow">Read More</a>
+                            </div>
+                        </div>
+                        `;
+                        // Note: The "Read More" link is '#' for now as this is a static page.
+                        // To make it dynamic, you would need another page like 'article.html?id=${post.id}'
+
+                        gridContainer.innerHTML += postCardHtml;
+                    });
+
+                } catch (error) {
+                    console.error('Error fetching insights:', error.message);
+                    gridContainer.innerHTML = '<p class="text-red-500">Could not load insights.</p>';
+                }
+            }
+
+            // 6. Run the function
+            loadInsights();
         });
     </script>
 </body>
 </html>
-
