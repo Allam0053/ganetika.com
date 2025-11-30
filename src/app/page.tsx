@@ -1,9 +1,12 @@
 'use client';
 
+import { useQuery } from '@tanstack/react-query';
 import * as React from 'react';
 import '@/lib/env';
 
 import { supabase } from '@/lib/utils';
+
+import ClientLayout from '@/app/components/layout.client';
 
 import { Content } from '@/types/content';
 
@@ -20,6 +23,29 @@ export type Insight = Content;
 // !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F
 // Before you begin editing, follow all comments with `STARTERCONF`,
 // to customize the default configuration.
+
+function Articles() {
+  const { isPending, error, data } = useQuery({
+    queryKey: ['content'],
+    queryFn: async () => {
+        const { data: content } = await supabase.from('content').select('*') as unknown as { data: Content[] };
+
+        console.log('duar duar query', content)
+
+        return content.length >= 1 ? content : [];
+    },
+  })
+//   const data = [];
+//   const isPending = false;
+//   const error = undefined;
+
+  if (isPending) return 'Loading...'
+
+  if (error) return 'An error has occurred: ' + error.message
+
+  return <>{data.map((article) => <ArticleCard key={article.id} id={article.id} title={article.title} content={article.content} tags={article.tag} />)}
+  </>
+}
 
 export default function HomePage() {
   const mainHeaderRef = React.useRef<HTMLElement>(null);
@@ -54,26 +80,8 @@ export default function HomePage() {
     });
   }, []);
 
-  const [insights, setInsights] = React.useState<Insight[]>([]);
-
-
-    // const [todos, setTodos] = React.useState([])
-  
-    React.useEffect(() => {
-      async function getTodos() {
-        const { data: todos } = await supabase.from('content').select('*');
-  
-        console.log('duar todos', todos);
-        if (todos.length > 1) {
-          setInsights(todos)
-        }
-      }
-  
-      getTodos();
-    }, []);
-
   return (
-    <>
+    <ClientLayout>
       <header ref={mainHeaderRef} id="main-header" className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
           <div className="container mx-auto px-6 py-4">
               <div className="flex justify-between items-center">
@@ -132,7 +140,7 @@ export default function HomePage() {
                 
                 <div id="insight-cards" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-                  {insights && insights.map((insight) => InsightCard(insight.id, insight.title, insight.content, insight.tag))}
+                    <Articles />
                     
                     <div className="bg-white rounded-lg overflow-hidden group">
                         <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Abstract+Market+Graph" alt="Market analysis" className="w-full h-48 object-cover group-hover:opacity-90 transition"/>
@@ -280,19 +288,18 @@ export default function HomePage() {
             </div>
         </div>
       </footer>
-    </>
-    
+    </ClientLayout>
   );
 }
 
-function InsightCard(id: string | number, title: string, content: string, tags?: string) {
+function ArticleCard({ id, title, content, tags }: {id: string | number, title: string, content: string, tags?: string}) {
   return (
-    <div id="insight-card-${id}" className="bg-white rounded-lg overflow-hidden group">
+    <div id={`insight-card-${id}`} className="bg-white rounded-lg overflow-hidden group">
       <img src="https://placehold.co/600x400/E2E8F0/1A2634?text=Abstract+Market+Graph" alt="${id}" className="w-full h-48 object-cover group-hover:opacity-90 transition"/>
       <div className="p-6">
         <p className="text-sm text-gold font-semibold mb-2">{tags}</p>
         <h3 className="text-xl font-bold text-primary-dark mb-3">{title}</h3>
-        <p className="text-gray-600 mb-4">{content}</p>
+        <p className="text-gray-600 mb-4 description">{content}</p>
         <a href="#" className="font-semibold text-gold link-arrow">Read More</a>
       </div>
     </div>

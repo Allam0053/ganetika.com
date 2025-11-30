@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
+@import "tailwindcss/preflight"
+@tailwind utilities;
 
 @theme {
   /* Font configuration */
@@ -183,6 +185,9 @@ body {
     transform: translateX(4px);
 }
 /* Header transition */
+#main-header {
+    border-bottom: 1px solid transparent;
+}
 #main-header.scrolled {
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -193,4 +198,11 @@ body {
 }
 #main-header.scrolled .logo-text {
     color: #1A2634;
+}
+
+.description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }

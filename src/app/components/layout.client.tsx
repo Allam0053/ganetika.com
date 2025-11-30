@@ -1,8 +1,14 @@
+'use client';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 import { Metadata } from 'next';
 import * as React from 'react';
 
 import '@/styles/colors.css';
 
+const queryClient = new QueryClient();
 export const metadata: Metadata = {
   title: 'Components',
   description: 'Pre-built components with awesome default',
@@ -13,5 +19,9 @@ export default function ComponentsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  )
 }
