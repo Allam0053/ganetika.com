@@ -60,12 +60,13 @@
         .admin-grid {
             display: grid !important;
             grid-template-columns: 1fr !important;
-            gap: 40px !important;
+            gap: 32px !important;
             width: 100% !important;
         }
         @media (min-width: 1024px) {
             .admin-grid {
-                grid-template-columns: 5fr 7fr !important;
+                grid-template-columns: 360px 1fr !important;
+                gap: 40px !important;
             }
         }
 
@@ -207,7 +208,7 @@
         </div>
     </header>
 
-    <main class="flex-grow flex items-center justify-center py-12 px-6">
+    <main class="flex-grow flex items-start justify-center py-8 md:py-12 px-4 md:px-6">
         
         <!-- ================= INITIAL LOADING STATE ================= -->
         <div id="auth-loading-section" class="flex flex-col items-center justify-center py-12">
@@ -219,7 +220,7 @@
         </div>
 
         <!-- ================= LOGIN SCREEN ================= -->
-        <section id="login-section" class="hidden w-full max-w-md bg-white rounded-xl shadow-xl border border-gray-100 p-8 md:p-10 transition-opacity duration-300">
+        <section id="login-section" class="hidden w-full max-w-md bg-white rounded-xl shadow-xl border border-gray-100 p-8 md:p-10 transition-opacity duration-300 my-auto">
             <div class="text-center mb-8">
                 <img src="/logo.png" alt="Ganetika Logo" class="h-10 mx-auto object-contain mb-4">
                 <h1 class="text-3xl font-bold text-primary-dark">Admin Portal</h1>
@@ -243,7 +244,7 @@
         </section>
 
         <!-- ================= DASHBOARD SCREEN (HIDDEN BY DEFAULT) ================= -->
-        <section id="dashboard-section" class="hidden w-full max-w-6xl bg-white rounded-xl shadow-xl border border-gray-100 p-6 md:p-10 transition-opacity duration-300">
+        <section id="dashboard-section" class="hidden w-full max-w-7xl bg-white rounded-xl shadow-xl border border-gray-100 p-6 md:p-10 transition-opacity duration-300">
             
             <!-- Dashboard Header -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-200 pb-6 mb-8 gap-4">
@@ -323,13 +324,13 @@
                         
                         <!-- Table -->
                         <div id="admin-documents-container" class="overflow-x-auto">
-                            <table class="min-w-full divide-y divide-gray-100" style="width: 100%; table-layout: fixed;">
+                            <table class="w-full divide-y divide-gray-100" style="width: 100%; table-layout: fixed;">
                                 <thead>
                                     <tr class="text-left text-xs font-semibold uppercase tracking-wider text-gray-400" style="border-bottom: 1px solid #e5e7eb;">
-                                        <th class="pb-4" style="text-align: left; padding-bottom: 16px;">Title</th>
-                                        <th class="pb-4" style="width: 25%; text-align: left; padding-bottom: 16px;">Category</th>
-                                        <th class="pb-4" style="width: 20%; text-align: left; padding-bottom: 16px;">Publish Date</th>
-                                        <th class="pb-4" style="width: 180px; text-align: right; padding-bottom: 16px;">Action</th>
+                                        <th class="pb-4 pr-4" style="width: 38%; text-align: left; padding-bottom: 16px;">Title</th>
+                                        <th class="pb-4 pr-4" style="width: 26%; text-align: left; padding-bottom: 16px;">Category</th>
+                                        <th class="pb-4 pr-4" style="width: 18%; text-align: left; padding-bottom: 16px;">Publish Date</th>
+                                        <th class="pb-4" style="width: 18%; min-width: 160px; text-align: right; padding-bottom: 16px;">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="admin-document-list-body" class="divide-y divide-gray-100">
@@ -648,12 +649,12 @@
                     tr.className = "hover:bg-[#FAF8F5] transition";
                     
                     tr.innerHTML = `
-                        <td style="text-align: left; padding: 12px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; font-weight: 600; color: #1A2634; padding-right: 16px;">
-                            <div>${escapeHtml(doc.title)}</div>
+                        <td style="text-align: left; padding: 12px 16px 12px 0; font-size: 14px; font-weight: 600; color: #1A2634; min-width: 0;">
+                            <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(doc.title)}">${escapeHtml(doc.title)}</div>
                             <div style="font-size: 10px; color: #9CA3AF; font-weight: normal; margin-top: 3px;">PDF • ${formatBytes(doc.file_size)}</div>
                         </td>
-                        <td style="text-align: left; padding: 12px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; color: #6B7280; padding-right: 16px;">${escapeHtml(doc.category)}</td>
-                        <td style="text-align: left; padding: 12px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; color: #6B7280; padding-right: 16px;">${formattedDate}</td>
+                        <td style="text-align: left; padding: 12px 16px 12px 0; font-size: 12px; color: #6B7280; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${escapeHtml(doc.category)}">${escapeHtml(doc.category)}</td>
+                        <td style="text-align: left; padding: 12px 16px 12px 0; font-size: 12px; color: #6B7280; white-space: nowrap;">${formattedDate}</td>
                         <td style="text-align: right; padding: 12px 0; white-space: nowrap;">
                             <button data-id="${doc.id}" data-title="${escapeHtml(doc.title)}" data-category="${escapeHtml(doc.category)}" data-rawdate="${rawDateStr}"
                                 class="edit-btn">
