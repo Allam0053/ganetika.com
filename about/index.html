@@ -416,171 +416,160 @@
                     </div>
                 </div>
 
-                <!-- Founder's Track Record Component -->
+                <!-- Founder's Track Record Component (Option 1: Ultra-Minimalist Private Memo) -->
                 <div id="founders-track-record" class="mt-16 pt-16 border-t border-gray-200">
                     <div class="mb-10 text-left">
-                        <p class="text-sm text-gold font-semibold uppercase tracking-wider mb-1">Proprietary Performance</p>
+                        <p class="text-xs text-gold font-semibold uppercase tracking-widest mb-1">Proprietary Performance</p>
                         <h3 class="text-3xl md:text-4xl font-bold text-primary-dark mb-3">Founder’s Track Record</h3>
-                        <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-3xl">
+                        <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-3xl font-light">
                             Historical performance of personally managed proprietary capital prior to and alongside fund operations.
                         </p>
                     </div>
 
-                    <!-- High-Level Summary Cards (Grid Layout) -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                        <!-- Card 1: Portfolio A -->
-                        <div class="bg-[#FAF8F5] rounded-xl p-6 border border-gray-200 shadow-sm relative overflow-hidden group hover:border-gold/50 transition duration-300">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-bold uppercase tracking-wider text-gold bg-gold/10 px-2.5 py-1 rounded-full border border-gold/20">Portfolio A</span>
-                                <span class="text-xs text-gray-400 font-medium">Since July 2021</span>
+                    <!-- Understated Summary Metrics Grid (Border-Divided Inline Layout) -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-200/80 border-y border-gray-200/80 py-8 mb-10">
+                        <!-- Portfolio A Summary -->
+                        <div class="md:px-8 first:pl-0 last:pr-0 pb-6 md:pb-0">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold uppercase tracking-widest text-gold">Portfolio A</span>
+                                <span class="text-xs text-gray-400 font-mono">Since July 2021</span>
                             </div>
-                            <div class="space-y-3">
+                            <div class="flex items-baseline justify-between mt-2">
                                 <div>
-                                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Cumulative Return</p>
-                                    <p class="text-3xl font-extrabold text-emerald-700 font-mono tracking-tight mt-0.5">+327.92%</p>
+                                    <span class="text-[11px] text-gray-400 font-medium uppercase tracking-wider block">Cumulative Return</span>
+                                    <span class="text-3xl font-bold text-primary-dark font-mono tracking-tight mt-0.5 block">+327.92%</span>
                                 </div>
-                                <div class="pt-3 border-t border-gray-200/80 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500 font-medium">Annualised (CAGR)</span>
-                                    <span class="text-lg font-bold text-primary-dark font-mono">33.07%</span>
+                                <div class="text-right">
+                                    <span class="text-[11px] text-gray-400 font-medium uppercase tracking-wider block">Annualised (CAGR)</span>
+                                    <span class="text-base font-bold text-primary-dark font-mono mt-0.5 block">33.07%</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Card 2: Portfolio B -->
-                        <div class="bg-[#FAF8F5] rounded-xl p-6 border border-gray-200 shadow-sm relative overflow-hidden group hover:border-gold/50 transition duration-300">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-bold uppercase tracking-wider text-gold bg-gold/10 px-2.5 py-1 rounded-full border border-gold/20">Portfolio B</span>
-                                <span class="text-xs text-gray-400 font-medium">Since Feb 2024</span>
+                        <!-- Portfolio B Summary -->
+                        <div class="md:px-8 first:pl-0 last:pr-0 pt-6 md:pt-0 pb-6 md:pb-0">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold uppercase tracking-widest text-gold">Portfolio B</span>
+                                <span class="text-xs text-gray-400 font-mono">Since Feb 2024</span>
                             </div>
-                            <div class="space-y-3">
+                            <div class="flex items-baseline justify-between mt-2">
                                 <div>
-                                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Cumulative Return</p>
-                                    <p class="text-3xl font-extrabold text-emerald-700 font-mono tracking-tight mt-0.5">+96.52%</p>
+                                    <span class="text-[11px] text-gray-400 font-medium uppercase tracking-wider block">Cumulative Return</span>
+                                    <span class="text-3xl font-bold text-primary-dark font-mono tracking-tight mt-0.5 block">+96.52%</span>
                                 </div>
-                                <div class="pt-3 border-t border-gray-200/80 flex justify-between items-center">
-                                    <span class="text-xs text-gray-500 font-medium">Annualised (CAGR)</span>
-                                    <span class="text-lg font-bold text-primary-dark font-mono">31.97%</span>
+                                <div class="text-right">
+                                    <span class="text-[11px] text-gray-400 font-medium uppercase tracking-wider block">Annualised (CAGR)</span>
+                                    <span class="text-base font-bold text-primary-dark font-mono mt-0.5 block">31.97%</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Card 3: Benchmark Reference -->
-                        <div class="bg-primary-dark text-white rounded-xl p-6 border border-primary-dark shadow-sm relative overflow-hidden">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="text-xs font-bold uppercase tracking-wider text-gold bg-gold/20 px-2.5 py-1 rounded-full border border-gold/30">Benchmark</span>
-                                <span class="text-xs text-gray-400 font-medium">Valuation Date</span>
+                        <!-- Benchmark Reference Summary -->
+                        <div class="md:px-8 first:pl-0 last:pr-0 pt-6 md:pt-0">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Benchmark Reference</span>
+                                <span class="text-xs text-gray-400 font-mono">31-Jul-2026</span>
                             </div>
-                            <div class="space-y-3">
-                                <div>
-                                    <p class="text-xs text-gray-400 font-medium uppercase tracking-wide">Index Reference</p>
-                                    <p class="text-xl font-bold text-white tracking-tight mt-0.5">S&P 500 Total Return</p>
-                                    <p class="text-xs text-gold font-mono">SPXTR Index</p>
-                                </div>
-                                <div class="pt-3 border-t border-gray-700 flex justify-between items-center">
-                                    <span class="text-xs text-gray-400 font-medium">Valuation As Of</span>
-                                    <span class="text-sm font-bold text-white font-mono">31-Jul-2026</span>
-                                </div>
+                            <div class="mt-2">
+                                <span class="text-[11px] text-gray-400 font-medium uppercase tracking-wider block">Index Reference</span>
+                                <span class="text-base font-semibold text-primary-dark mt-0.5 block">S&P 500 Total Return (SPXTR)</span>
+                                <span class="text-xs text-gray-500 font-mono block mt-1">Reinvestment of gross dividends</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Main Data Table Container -->
-                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden mb-8">
+                    <!-- Understated Main Data Table -->
+                    <div class="bg-white rounded-lg border border-gray-200/80 overflow-hidden mb-8">
                         <div class="overflow-x-auto">
                             <table class="w-full text-left border-collapse min-w-[640px]">
                                 <thead>
-                                    <tr class="bg-primary-dark text-white text-xs uppercase tracking-wider border-b border-primary-dark">
-                                        <th scope="col" class="py-4 px-6 font-semibold">Year</th>
-                                        <th scope="col" class="py-4 px-6 text-right font-semibold">Portfolio A (TWR)</th>
-                                        <th scope="col" class="py-4 px-6 text-right font-semibold">Portfolio B (TWR)</th>
-                                        <th scope="col" class="py-4 px-6 text-right font-semibold">Benchmark (SPXTR)</th>
-                                        <th scope="col" class="py-4 px-6 font-semibold">Note</th>
+                                    <tr class="bg-gray-50/80 text-primary-dark text-xs uppercase tracking-wider border-b border-gray-200">
+                                        <th scope="col" class="py-3.5 px-6 font-semibold">Year</th>
+                                        <th scope="col" class="py-3.5 px-6 text-right font-semibold">Portfolio A (TWR)</th>
+                                        <th scope="col" class="py-3.5 px-6 text-right font-semibold">Portfolio B (TWR)</th>
+                                        <th scope="col" class="py-3.5 px-6 text-right font-semibold">Benchmark (SPXTR)</th>
+                                        <th scope="col" class="py-3.5 px-6 font-semibold">Note</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-gray-200 text-sm">
+                                <tbody class="divide-y divide-gray-100 text-sm text-primary-dark">
                                     <!-- 2021 -->
-                                    <tr class="hover:bg-gray-50/50 transition">
-                                        <td class="py-4 px-6 font-bold text-primary-dark">2021</td>
-                                        <td class="py-4 px-6 text-right font-mono font-medium text-emerald-700">+38.90%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-gray-400">—</td>
-                                        <td class="py-4 px-6 text-right font-mono text-emerald-700">+28.70%</td>
-                                        <td class="py-4 px-6 text-xs text-gray-500">Portfolio A funded on 12 July 2021. SPXTR full year.</td>
+                                    <tr class="hover:bg-gray-50/40 transition">
+                                        <td class="py-3.5 px-6 font-semibold">2021</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+38.90%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono text-gray-400">—</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+28.70%</td>
+                                        <td class="py-3.5 px-6 text-xs text-gray-500 font-light">Portfolio A funded on 12 July 2021. SPXTR full year.</td>
                                     </tr>
                                     <!-- 2022 -->
-                                    <tr class="hover:bg-gray-50/50 transition">
-                                        <td class="py-4 px-6 font-bold text-primary-dark">2022</td>
-                                        <td class="py-4 px-6 text-right font-mono font-medium text-rose-700">-38.06%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-gray-400">—</td>
-                                        <td class="py-4 px-6 text-right font-mono text-rose-700">-18.10%</td>
-                                        <td class="py-4 px-6 text-xs text-gray-500"></td>
+                                    <tr class="hover:bg-gray-50/40 transition">
+                                        <td class="py-3.5 px-6 font-semibold">2022</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">-38.06%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono text-gray-400">—</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">-18.10%</td>
+                                        <td class="py-3.5 px-6 text-xs text-gray-500 font-light"></td>
                                     </tr>
                                     <!-- 2023 -->
-                                    <tr class="hover:bg-gray-50/50 transition">
-                                        <td class="py-4 px-6 font-bold text-primary-dark">2023</td>
-                                        <td class="py-4 px-6 text-right font-mono font-medium text-emerald-700">+83.94%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-gray-400">—</td>
-                                        <td class="py-4 px-6 text-right font-mono text-emerald-700">+26.30%</td>
-                                        <td class="py-4 px-6 text-xs text-gray-500"></td>
+                                    <tr class="hover:bg-gray-50/40 transition">
+                                        <td class="py-3.5 px-6 font-semibold">2023</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+83.94%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono text-gray-400">—</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+26.30%</td>
+                                        <td class="py-3.5 px-6 text-xs text-gray-500 font-light"></td>
                                     </tr>
                                     <!-- 2024 -->
-                                    <tr class="hover:bg-gray-50/50 transition">
-                                        <td class="py-4 px-6 font-bold text-primary-dark">2024</td>
-                                        <td class="py-4 px-6 text-right font-mono font-medium text-emerald-700">+25.10%</td>
-                                        <td class="py-4 px-6 text-right font-mono font-medium text-rose-700">-16.26%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-emerald-700">+25.00%</td>
-                                        <td class="py-4 px-6 text-xs text-gray-500">Portfolio B funded on 23 Feb 2024. SPXTR full year.</td>
+                                    <tr class="hover:bg-gray-50/40 transition">
+                                        <td class="py-3.5 px-6 font-semibold">2024</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+25.10%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">-16.26%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+25.00%</td>
+                                        <td class="py-3.5 px-6 text-xs text-gray-500 font-light">Portfolio B funded on 23 Feb 2024. SPXTR full year.</td>
                                     </tr>
                                     <!-- 2025 -->
-                                    <tr class="hover:bg-gray-50/50 transition">
-                                        <td class="py-4 px-6 font-bold text-primary-dark">2025</td>
-                                        <td class="py-4 px-6 text-right font-mono font-medium text-emerald-700">+88.95%</td>
-                                        <td class="py-4 px-6 text-right font-mono font-medium text-emerald-700">+95.96%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-emerald-700">+17.90%</td>
-                                        <td class="py-4 px-6 text-xs text-gray-500"></td>
+                                    <tr class="hover:bg-gray-50/40 transition">
+                                        <td class="py-3.5 px-6 font-semibold">2025</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+88.95%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+95.96%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+17.90%</td>
+                                        <td class="py-3.5 px-6 text-xs text-gray-500 font-light"></td>
                                     </tr>
                                     <!-- 2026 YTD -->
-                                    <tr class="hover:bg-gray-50/50 transition">
-                                        <td class="py-4 px-6 font-bold text-primary-dark">2026 (YTD July)</td>
-                                        <td class="py-4 px-6 text-right font-mono font-medium text-emerald-700">+14.40%</td>
-                                        <td class="py-4 px-6 text-right font-mono font-medium text-emerald-700">+19.76%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-emerald-700">+10.10%</td>
-                                        <td class="py-4 px-6 text-xs text-gray-500">As of 31 July 2026.</td>
+                                    <tr class="hover:bg-gray-50/40 transition">
+                                        <td class="py-3.5 px-6 font-semibold">2026 (YTD July)</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+14.40%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+19.76%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono">+10.10%</td>
+                                        <td class="py-3.5 px-6 text-xs text-gray-500 font-light">As of 31 July 2026.</td>
                                     </tr>
                                 </tbody>
                                 <!-- Highlighted Summary Rows -->
-                                <tfoot class="border-t-2 border-gray-300 bg-gray-50 font-bold">
+                                <tfoot class="border-t-2 border-gray-300 bg-gray-50/60 font-semibold text-primary-dark">
                                     <tr class="border-b border-gray-200">
-                                        <td class="py-4 px-6 text-primary-dark">Since Inception (Cumulative)</td>
-                                        <td class="py-4 px-6 text-right font-mono text-base text-emerald-700 font-extrabold">+327.92%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-base text-emerald-700 font-extrabold">+96.52%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-gray-400">—</td>
-                                        <td class="py-4 px-6"></td>
+                                        <td class="py-3.5 px-6">Since Inception (Cumulative)</td>
+                                        <td class="py-3.5 px-6 text-right font-mono font-bold text-base">+327.92%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono font-bold text-base">+96.52%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono text-gray-400">—</td>
+                                        <td class="py-3.5 px-6"></td>
                                     </tr>
                                     <tr>
-                                        <td class="py-4 px-6 text-primary-dark">Annualised (CAGR)</td>
-                                        <td class="py-4 px-6 text-right font-mono text-base text-primary-dark font-extrabold">33.07%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-base text-primary-dark font-extrabold">31.97%</td>
-                                        <td class="py-4 px-6 text-right font-mono text-gray-400">—</td>
-                                        <td class="py-4 px-6"></td>
+                                        <td class="py-3.5 px-6">Annualised (CAGR)</td>
+                                        <td class="py-3.5 px-6 text-right font-mono font-bold text-base">33.07%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono font-bold text-base">31.97%</td>
+                                        <td class="py-3.5 px-6 text-right font-mono text-gray-400">—</td>
+                                        <td class="py-3.5 px-6"></td>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </div>
 
-                    <!-- Notes & Legal Disclaimer Block -->
-                    <div class="bg-[#FAF8F5] border border-gray-200 rounded-xl p-6 md:p-8 text-xs text-gray-600 space-y-3 leading-relaxed">
-                        <div class="flex items-center space-x-2 text-primary-dark font-bold text-sm mb-2 border-b border-gray-200/80 pb-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <span>Notes & Calculation Methodology</span>
-                        </div>
-                        <ul class="space-y-2 list-disc list-inside text-gray-600">
-                            <li><strong class="text-gray-800">Time-Weighted Return (TWR):</strong> Performance figures are calculated on a Time-Weighted Return basis to neutralize the impact of capital additions and withdrawals.</li>
-                            <li><strong class="text-gray-800">Inception Periods:</strong> Portfolio A inception date is 12 July 2021. Portfolio B inception date is 23 February 2024. Benchmark calculations for inception years reflect full calendar year SPXTR returns for reference.</li>
-                            <li><strong class="text-gray-800">Benchmark:</strong> Comparative index shown is the S&P 500 Total Return Index (<code class="bg-gray-200/60 text-gray-800 px-1 py-0.5 rounded font-mono">SPXTR</code>), which incorporates gross dividend reinvestment.</li>
-                            <li><strong class="text-gray-800">Proprietary Capital Disclaimer:</strong> The returns presented above reflect personal proprietary account management by the founder prior to and alongside formal partnership operations. Historical personal performance is provided for track record transparency and does not guarantee future strategy returns.</li>
+                    <!-- Understated Notes & Legal Disclaimer (Left Border Accent) -->
+                    <div class="border-l-2 border-gold/50 pl-5 py-2 text-xs text-gray-500 space-y-2 leading-relaxed">
+                        <p class="font-semibold text-primary-dark uppercase tracking-wider text-[11px]">Notes & Calculation Methodology</p>
+                        <ul class="space-y-1.5 list-disc list-inside text-gray-600 font-light">
+                            <li><strong class="font-medium text-gray-700">Time-Weighted Return (TWR):</strong> Performance figures are calculated on a Time-Weighted Return basis to neutralize the impact of capital additions and withdrawals.</li>
+                            <li><strong class="font-medium text-gray-700">Inception Periods:</strong> Portfolio A inception date is 12 July 2021. Portfolio B inception date is 23 February 2024. Benchmark calculations for inception years reflect full calendar year SPXTR returns for reference.</li>
+                            <li><strong class="font-medium text-gray-700">Benchmark:</strong> Comparative index shown is the S&P 500 Total Return Index (<code class="bg-gray-100 text-gray-700 px-1 py-0.5 rounded font-mono">SPXTR</code>), which incorporates gross dividend reinvestment.</li>
+                            <li><strong class="font-medium text-gray-700">Proprietary Capital Disclaimer:</strong> The returns presented above reflect personal proprietary account management by the founder prior to and alongside formal partnership operations. Historical personal performance is provided for track record transparency and does not guarantee future strategy returns.</li>
                         </ul>
                     </div>
                 </div>
